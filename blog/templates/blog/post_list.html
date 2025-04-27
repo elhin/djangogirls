@@ -1,24 +1,13 @@
+{% extends 'blog/base.html' %}
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-
-<header><h1>My Blog</h1></header>
-
-{% for post in posts %}
-<article>
-    <time>published: {{ post.published_date }}</time>
-    <h2><a href="">{{ post.title }}</a></h2>
-    <p>{{ post.text|linebreaksbr }}</p>
-</article>
-{% endfor %}
-
-<body>
-    <p>Hi there!</p>
-    <p>It works!</p>
-    <h1 class="text">If you find yourself...</h1>
-    <p>I wonder who and where I am... I wonder how I got here. I'm lost. The abyss is upon me.</p>
-    <h2 class="text">If you lose yourself...</h2>
-    <p class="text">There's nothing to be done.</p>
-</body>
-</html>
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+            <h2><a href="">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </article>
+    {% endfor %}
+{% endblock %}
